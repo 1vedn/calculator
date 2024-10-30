@@ -1,10 +1,10 @@
-package com.example.calculator
-
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
+import com.example.calculator.R
+import net.objecthunter.exp4j.ExpressionBuilder // Import the ExpressionBuilder
 
 class MainActivity : AppCompatActivity() {
 
@@ -60,8 +60,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun evalExpression(expression: String): Double {
-        // Здесь вы можете реализовать парсер или использовать библиотеку для вычисления выражений
-        // В данном примере используем eval (нужно будет реализовать самостоятельно)
-        return 0.0 // Замените на реальную логику
+        return try {
+            ExpressionBuilder(expression).build().evaluate()
+        } catch (e: Exception) {
+            0.0
+        }
     }
 }
