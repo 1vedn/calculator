@@ -1,12 +1,14 @@
+package com.example.calculator
+
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
-import androidx.appcompat.app.AppCompatActivity
-import com.example.calculator.R
-import net.objecthunter.exp4j.ExpressionBuilder // Import the ExpressionBuilder
+import android.widget.Toast
+import androidx.activity.ComponentActivity
+import net.objecthunter.exp4j.ExpressionBuilder
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : ComponentActivity() {
 
     private lateinit var editTextResult: EditText
     private var lastNumeric: Boolean = false
@@ -22,7 +24,7 @@ class MainActivity : AppCompatActivity() {
             R.id.button4, R.id.button5, R.id.button6, R.id.button7,
             R.id.button8, R.id.button9, R.id.buttonPlus,
             R.id.buttonMinus, R.id.buttonMultiply, R.id.buttonDivide,
-            R.id.buttonEquals, R.id.buttonClear
+            R.id.buttonEquals, R.id.buttonClear, R.id.buttonBackspace
         )
 
         for (id in buttonIds) {
@@ -34,6 +36,7 @@ class MainActivity : AppCompatActivity() {
         val button = view as Button
         when (button.text) {
             "C" -> clear()
+            "←" -> backspace()
             "=" -> calculate()
             else -> appendToExpression(button.text.toString())
         }
@@ -45,9 +48,24 @@ class MainActivity : AppCompatActivity() {
         lastDot = false
     }
 
+    private fun backspace() {
+        val currentText = editTextResult.text.toString()
+        if (currentText.isNotEmpty()) {
+            editTextResult.setText(currentText.dropLast(1))
+        }
+    }
+
     private fun appendToExpression(value: String) {
-        editTextResult.append(value)
-        lastNumeric = true
+        val currentText = editTextResult.text.toString()
+        if (value == "." && lastDot) {
+            return
+        }
+        if (value in "+-*/" && currentText.isNotEmpty() && currentText.last().toString() in "+-*/") {
+            editTextResult.setText(currentText.dropLast(1) + value)
+        } else {
+            editTextResult.append(value)
+        }
+        lastNumeric = value !in "+-*/."
         lastDot = value == "."
     }
 
@@ -55,15 +73,18 @@ class MainActivity : AppCompatActivity() {
         if (lastNumeric) {
             val expression = editTextResult.text.toString()
             val result = evalExpression(expression)
-            editTextResult.setText(result.toString())
+            editTextResult.setText(result)
+        } else {
+            Toast.makeText(this, "Invalid expression", Toast.LENGTH_SHORT).show()
         }
     }
 
-    private fun evalExpression(expression: String): Double {
+    private fun evalExpression(expression: String): String {
         return try {
-            ExpressionBuilder(expression).build().evaluate()
+            val result = ExpressionBuilder(expression).build().evaluate()
+            result.toString()
         } catch (e: Exception) {
-            0.0
+            "Error"
         }
     }
 }

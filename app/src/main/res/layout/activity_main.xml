@@ -1,97 +1,170 @@
-<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!-- Редактируемое поле для отображения результата -->
     <EditText
         android:id="@+id/editTextResult"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:background="@android:color/transparent"
-        android:focusable="true"
-        android:inputType="text"
+        android:focusable="false"
+        android:inputType="none"
         android:padding="16dp"
-        android:textSize="32sp" />
-
+        android:textSize="32sp"
+        android:hint="Результат" />
 
     <GridLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_below="@id/editTextResult"
         android:rowCount="5"
-        android:columnCount="4">
+        android:columnCount="4"
+        android:layout_alignParentBottom="true">
 
-        <!-- Numbers -->
+        <!-- Первая строка -->
         <Button
             android:id="@+id/button7"
             android:text="7"
-            android:onClick="onButtonClick" />
+            android:onClick="onButtonClick"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1" />
         <Button
             android:id="@+id/button8"
             android:text="8"
-            android:onClick="onButtonClick" />
+            android:onClick="onButtonClick"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1" />
         <Button
             android:id="@+id/button9"
             android:text="9"
-            android:onClick="onButtonClick" />
+            android:onClick="onButtonClick"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1" />
         <Button
             android:id="@+id/buttonDivide"
             android:text="/"
-            android:onClick="onButtonClick" />
+            android:onClick="onButtonClick"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1" />
 
         <Button
             android:id="@+id/button4"
             android:text="4"
-            android:onClick="onButtonClick" />
+            android:onClick="onButtonClick"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1" />
         <Button
             android:id="@+id/button5"
             android:text="5"
-            android:onClick="onButtonClick" />
+            android:onClick="onButtonClick"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1" />
         <Button
             android:id="@+id/button6"
             android:text="6"
-            android:onClick="onButtonClick" />
+            android:onClick="onButtonClick"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1" />
         <Button
             android:id="@+id/buttonMultiply"
             android:text="*"
-            android:onClick="onButtonClick" />
+            android:onClick="onButtonClick"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1" />
 
         <Button
             android:id="@+id/button1"
             android:text="1"
-            android:onClick="onButtonClick" />
+            android:onClick="onButtonClick"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1" />
         <Button
             android:id="@+id/button2"
             android:text="2"
-            android:onClick="onButtonClick" />
+            android:onClick="onButtonClick"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1" />
         <Button
             android:id="@+id/button3"
             android:text="3"
-            android:onClick="onButtonClick" />
+            android:onClick="onButtonClick"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1" />
         <Button
             android:id="@+id/buttonMinus"
             android:text="-"
-            android:onClick="onButtonClick" />
+            android:onClick="onButtonClick"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1" />
 
         <Button
             android:id="@+id/buttonClear"
             android:text="C"
-            android:onClick="onButtonClick" />
+            android:onClick="onButtonClick"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1" />
         <Button
             android:id="@+id/button0"
             android:text="0"
-            android:onClick="onButtonClick" />
+            android:onClick="onButtonClick"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1" />
         <Button
-            android:id="@+id/buttonEquals"
-            android:text="="
-            android:onClick="onButtonClick" />
+            android:id="@+id/buttonBackspace"
+            android:text="←"
+            android:onClick="onButtonClick"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1" />
         <Button
             android:id="@+id/buttonPlus"
             android:text="+"
-            android:onClick="onButtonClick" />
+            android:onClick="onButtonClick"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1" />
+
+       <Button
+            android:id="@+id/buttonEquals"
+            android:text="="
+            android:onClick="onButtonClick"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_rowSpan="1"
+            android:layout_columnSpan="4"
+            android:layout_rowWeight="1" />
 
     </GridLayout>
-
 </RelativeLayout>
